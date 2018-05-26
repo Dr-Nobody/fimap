@@ -751,11 +751,13 @@ class targetScanner (baseClass.baseClass):
                     rep.setSurfix("&")
                 
                 if (rep.isUnix() and fileobj.isUnix() or rep.isWindows() and fileobj.isWindows()):
-                    if (self.readFile(rep, f, p, True, POST=post)):
-                        ret.append(f)
-                        self.addXMLLog(rep, type, f)
-                    else:
-                        pass
+                    for fileobj2 in files:
+                        f2 = f + fileobj2.getFilepath()
+                        if (self.readFile(rep, f2, p, True, POST=post)):
+                            ret.append(f2)
+                            self.addXMLLog(rep, type, f2)
+                        else:
+                            pass
                 else:
                     self._log("Skipping absolute file '%s' because it's not suitable for our OS."%f, self.LOG_DEBUG)
             else:

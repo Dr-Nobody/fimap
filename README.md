@@ -5,6 +5,17 @@ fimap is a little python tool which can find, prepare, audit, exploit and even g
 
 Originally, this tool was created by [this very awesome fellow](https://tha-imax.de/git/root/fimap/tree/master) but there hasn't been a lot of movement on the project since porting to github.
 
+Modifications done here:
+- correct bug when post is empty
+- deletion of the untrusted URLs used (https://tha-imax.de)
+- Add missing PHP functions for execution
+
+TODO:
+- Add PHP filters
+- Detect base64
+- Choose your RFI website instead of the previous one: https://tha-imax.de (which is removed)
+
+
 * * *
 
 ## What works currently?

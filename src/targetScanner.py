@@ -100,7 +100,7 @@ class targetScanner (baseClass.baseClass):
             headDict[headerKey] = tmphead
         
         code = None
-        if (post==None):
+        if (post==None or post==""):
             self._log("Requesting: '%s'..." %(tmpurl), self.LOG_DEBUG)
             code = self.doGetRequest(tmpurl, additionalHeaders=headDict)
         else:

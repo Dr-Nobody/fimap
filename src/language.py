@@ -449,24 +449,28 @@ class baseLanguage(baseTools):
         self.do_force_inclusion_test    = self.XML_Rootitem.getAttribute("force_inclusion_test") == "1"
         
         rel_node = getXMLNode(self.XML_Rootitem, "relative_files")
-        rel_files = getXMLNodes(rel_node, "file")
-        for f in rel_files:
-            self.relative_files.append(fiFile(f, self.config))
+        if rel_node != None:
+            rel_files = getXMLNodes(rel_node, "file")
+            for f in rel_files:
+                self.relative_files.append(fiFile(f, self.config))
         
         abs_node = getXMLNode(self.XML_Rootitem, "absolute_files")
-        abs_files = getXMLNodes(abs_node, "file")
-        for f in abs_files:
-            self.absolute_files.append(fiFile(f, self.config))
+        if abs_node != None:
+            abs_files = getXMLNodes(abs_node, "file")
+            for f in abs_files:
+                self.absolute_files.append(fiFile(f, self.config))
         
         rem_node = getXMLNode(self.XML_Rootitem, "remote_files")
-        rem_files = getXMLNodes(rem_node, "file")
-        for f in rem_files:
-            self.remote_files.append(fiFile(f, self.config))
+        if rem_node != None:
+            rem_files = getXMLNodes(rem_node, "file")
+            for f in rem_files:
+                self.remote_files.append(fiFile(f, self.config))
         
         log_node = getXMLNode(self.XML_Rootitem, "log_files")
-        log_files = getXMLNodes(log_node, "file")
-        for f in log_files:
-            self.log_files.append(fiFile(f, self.config))
+        if log_node != None:
+            log_files = getXMLNodes(log_node, "file")
+            for f in log_files:
+                self.log_files.append(fiFile(f, self.config))
         
         exec_methods = getXMLNode(self.XML_Rootitem, "exec_methods")
         exec_nodes = getXMLNodes(exec_methods, "exec")

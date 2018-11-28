@@ -452,7 +452,7 @@ class targetScanner (baseClass.baseClass):
                 self._log("Operating System is 'Unix-Like'.", self.LOG_INFO)
 
 
-            errmsg = m.group("incname")
+            errmsg = m.group(1)
 
             if (errmsg == rndStr):
                 r.setPrefix("")

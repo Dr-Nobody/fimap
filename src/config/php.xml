@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fimap language="php" revision="4" force_inclusion_test="0" autor="Iman Karim (imax@tha-imax.de)" >
-	<snipe regex="Failed to open stream:* '(?P&lt;incname&gt;[\d\w/\.\-:\\]*?%s[\d\w/\.\-\\]*?)' (for inclusion)*" />
-
+<fimap language="php" revision="5" force_inclusion_test="0" autor="Iman Karim (imax@tha-imax.de)" >
+	<snipe regex="<b>Warning</b>:  [\w_]+\((%s)\) ([\w_:()<>\[\]=\' /.]+) failed to open stream: No such file or directory in <b>([\w_:/.]+)</b>" />
 	<relative_files>
 	</relative_files>
 	
@@ -10,6 +9,10 @@
 	  <file path="php://filter/convert.quoted-printable-encode/resource=" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
 	  <file path="php://filter/string.rot13/resource=" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
 	  <file path="php://filter/string.tolower/resource=" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
+	  <file path="expect://ls" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
+	  <file path="php://input" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
+	  <file path="data://text/plain;base64,RXhwbG9pdCBEYXRhVVJJIGluY2x1c2lvbg==" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
+	  <file path="data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2B" post="__QUIZ__" find="__ANSWER__" flags="rxP"  unix="1" windows="1"/>
 	</absolute_files>
 		
 	<log_files>
